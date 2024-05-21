@@ -27,7 +27,7 @@ jobs:
         if: failure()
         run: |
           set +e
-          grep -E "<testcase|<failure" junit/*.xml | grep -B 1 "<failure" > failure-report.txt
+          awk '/<testcase /{print; next} /<failure/{print; while(getline && !/<\/testcase/){print}}' junit/*.xml > failure-report.txt
           if [ -s failure-report.txt ]; then
             summary=$(cat failure-report.txt | sed 's/</&lt;/g' | sed 's/>/&gt;/g')
           else
