@@ -22,6 +22,15 @@ jobs:
         run: |
           mkdir -p junit
           cp target/surefire-reports/*.xml junit/
+      - name: Create test failure report
+        if: failure()
+        run: |
+          set +e
+          grep -E "<testcase|<failure" junit/*.xml | grep -B 1 "<failure" > failure-report.txt
+          if [ -s failure-report.txt ]; then
+            cat failure-report.txt
+          else
+            echo "No detailed failure information found." > failure-report.txt
       - name: Notify Telegram on failure
         if: failure()
         uses: appleboy/telegram-action@master
@@ -34,8 +43,8 @@ jobs:
             *Repository*: ${{ github.repository }}
             *Actor*: ${{ github.actor }}
             *Commit number*: ${{ github.sha }}
-            *Commit is not passed test ⚠️*
-            Отчет о проваленных тестах приложен к этому сообщению.
+            *Commit is not passed test ⚠️. 
+            Logs in the file:*
           document: failure-report.txt
       - name: Notify Telegram on success
         if: success()
