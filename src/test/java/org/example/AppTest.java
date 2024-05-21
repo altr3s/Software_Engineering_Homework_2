@@ -43,7 +43,7 @@ public class AppTest {
 		String filePath = "src/test/resources/tests/test_max.txt";
 		BufferedReader reader = new BufferedReader(new FileReader(filePath));
 		String[] nums = reader.readLine().split(" ");
-        Assertions.assertEquals(expectations.get(1), App._max(nums));
+        Assertions.assertEquals(expectations.get(0), App._max(nums));
     }
 
 	@Test
