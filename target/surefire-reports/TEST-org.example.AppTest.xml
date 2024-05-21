@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.example.AppTest" time="372.159" tests="31" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.example.AppTest" time="34.839" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1251"/>
-    <property name="java.class.path" value="D:\PC\code-projects\Software_Engineering_Homework_2\target\test-classes;D:\PC\code-projects\Software_Engineering_Homework_2\target\classes;C:\Users\leome\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\leome\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.class.path" value="D:\PC\code-projects\Software_Engineering_Homework_2\target\test-classes;D:\PC\code-projects\Software_Engineering_Homework_2\target\classes;C:\Users\leome\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\leome\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;C:\Users\leome\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\leome\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\leome\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\leome\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +15,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="RU"/>
     <property name="sun.boot.library.path" value="C:\Users\leome\.jdks\openjdk-21.0.2\bin"/>
-    <property name="sun.java.command" value="C:\Users\leome\AppData\Local\Temp\surefire1861627480136298023\surefirebooter-20240521170642808_3.jar C:\Users\leome\AppData\Local\Temp\surefire1861627480136298023 2024-05-21T17-06-42_702-jvmRun1 surefire-20240521170642808_1tmp surefire_0-20240521170642808_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\leome\AppData\Local\Temp\surefire16030301447271925904\surefirebooter13252760135605370468.jar C:\Users\leome\AppData\Local\Temp\surefire16030301447271925904 2024-05-21T21-45-52_077-jvmRun1 surefire13382459222226861209tmp surefire_05355472628693280218tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="D:\PC\code-projects\Software_Engineering_Homework_2\target\test-classes;D:\PC\code-projects\Software_Engineering_Homework_2\target\classes;C:\Users\leome\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\leome\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="surefire.test.class.path" value="D:\PC\code-projects\Software_Engineering_Homework_2\target\test-classes;D:\PC\code-projects\Software_Engineering_Homework_2\target\classes;C:\Users\leome\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\leome\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;C:\Users\leome\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\leome\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\leome\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\leome\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\leome"/>
     <property name="user.language" value="ru"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\leome\AppData\Local\Temp\surefire1861627480136298023\surefirebooter-20240521170642808_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\leome\AppData\Local\Temp\surefire16030301447271925904\surefirebooter13252760135605370468.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.2+13-58"/>
@@ -59,35 +59,9 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="test10" classname="org.example.AppTest" time="11.089"/>
-  <testcase name="test11" classname="org.example.AppTest" time="11.616"/>
-  <testcase name="test12" classname="org.example.AppTest" time="11.636"/>
-  <testcase name="test13" classname="org.example.AppTest" time="11.573"/>
-  <testcase name="test14" classname="org.example.AppTest" time="11.593"/>
-  <testcase name="test15" classname="org.example.AppTest" time="11.574"/>
-  <testcase name="test16" classname="org.example.AppTest" time="11.902"/>
-  <testcase name="test17" classname="org.example.AppTest" time="11.596"/>
-  <testcase name="test18" classname="org.example.AppTest" time="12.881"/>
-  <testcase name="test19" classname="org.example.AppTest" time="11.704"/>
-  <testcase name="test20" classname="org.example.AppTest" time="12.367"/>
-  <testcase name="test21" classname="org.example.AppTest" time="11.943"/>
-  <testcase name="test22" classname="org.example.AppTest" time="12.565"/>
-  <testcase name="test23" classname="org.example.AppTest" time="11.75"/>
-  <testcase name="test24" classname="org.example.AppTest" time="12.949"/>
-  <testcase name="test25" classname="org.example.AppTest" time="13.496"/>
-  <testcase name="test26" classname="org.example.AppTest" time="12.696"/>
-  <testcase name="test27" classname="org.example.AppTest" time="13.187"/>
-  <testcase name="test28" classname="org.example.AppTest" time="12.815"/>
-  <testcase name="test29" classname="org.example.AppTest" time="12.235"/>
-  <testcase name="test30" classname="org.example.AppTest" time="12.65"/>
-  <testcase name="test31" classname="org.example.AppTest" time="12.129"/>
-  <testcase name="test1" classname="org.example.AppTest" time="11.611"/>
-  <testcase name="test2" classname="org.example.AppTest" time="11.585"/>
-  <testcase name="test3" classname="org.example.AppTest" time="11.585"/>
-  <testcase name="test4" classname="org.example.AppTest" time="11.568"/>
-  <testcase name="test5" classname="org.example.AppTest" time="11.58"/>
-  <testcase name="test6" classname="org.example.AppTest" time="11.568"/>
-  <testcase name="test7" classname="org.example.AppTest" time="11.566"/>
-  <testcase name="test8" classname="org.example.AppTest" time="11.581"/>
-  <testcase name="test9" classname="org.example.AppTest" time="11.53"/>
+  <testcase name="testMax" classname="org.example.AppTest" time="0.049"/>
+  <testcase name="testMin" classname="org.example.AppTest" time="0.024"/>
+  <testcase name="testSum" classname="org.example.AppTest" time="0.032"/>
+  <testcase name="testEmpty" classname="org.example.AppTest" time="0.002"/>
+  <testcase name="testMult" classname="org.example.AppTest" time="7.707"/>
 </testsuite>
