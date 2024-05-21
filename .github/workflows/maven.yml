@@ -1,11 +1,9 @@
 name: Java CI with Maven
-
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,26 +15,30 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
-      - name: Notify Telegram
+      - name: Notify Telegram on failure
+        if: failure()
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
-          if: success()
+          message: |
+            Build Failed ❌
+            *Repository*: ${{ github.repository }}
+            *Actor*: ${{ github.actor }}
+            *Commit number*: ${{ github.sha }}
+      - name: Notify Telegram on success
+        if: success()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          format: markdown
           message: |
             Build Success ✅
             *Repository*: ${{ github.repository }}
             *Actor*: ${{ github.actor }}
-            *Commit*: ${{ github.sha }}
-          else:
-            |
-            Build Failed ❌
-            *Repository*: ${{ github.repository }}
-            *Actor*: ${{ github.actor }}
-            *Commit*: ${{ github.sha }}
-        
+            *Commit number*: ${{ github.sha }}
