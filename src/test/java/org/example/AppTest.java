@@ -9,9 +9,7 @@ import java.util.List;
 import org.junit.*;
 
 public class AppTest {
-    public String expectations_path = "src/test/resources/expectations.txt";
-
-    public static List<BigInteger[]> readExpectations(String fileName) {
+	public static List<BigInteger[]> readExpectations(String fileName) {
         List<BigInteger[]> expectations = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
@@ -45,159 +43,161 @@ public class AppTest {
         }
     }
 
+	public String expectations_path = "src/test/resources/tests/expectations.txt";
+
     List<BigInteger[]> expectations = readExpectations(expectations_path);
 
     @Test
     public void test1() {
-        runTest(0, "src/test/resources/test_1.txt");
+        runTest(0, "src/test/resources/tests/test_1.txt");
     }
 
     @Test
     public void test2() {
-        runTest(1, "src/test/resources/test_2.txt");
+        runTest(1, "src/test/resources/tests/test_2.txt");
     }
 
     @Test
     public void test3() {
-        runTest(2, "src/test/resources/test_3.txt");
+        runTest(2, "src/test/resources/tests/test_3.txt");
     }
 
     @Test
     public void test4() {
-        runTest(3, "src/test/resources/test_4.txt");
+        runTest(3, "src/test/resources/tests/test_4.txt");
     }
 
     @Test
     public void test5() {
-        runTest(4, "src/test/resources/test_5.txt");
+        runTest(4, "src/test/resources/tests/test_5.txt");
     }
 
     @Test
     public void test6() {
-        runTest(5, "src/test/resources/test_6.txt");
+        runTest(5, "src/test/resources/tests/test_6.txt");
     }
 
     @Test
     public void test7() {
-        runTest(6, "src/test/resources/test_7.txt");
+        runTest(6, "src/test/resources/tests/test_7.txt");
     }
 
     @Test
     public void test8() {
-        runTest(7, "src/test/resources/test_8.txt");
+        runTest(7, "src/test/resources/tests/test_8.txt");
     }
 
     @Test
     public void test9() {
-        runTest(8, "src/test/resources/test_9.txt");
+        runTest(8, "src/test/resources/tests/test_9.txt");
     }
 
     @Test
     public void test10() {
-        runTest(9, "src/test/resources/test_10.txt");
+        runTest(9, "src/test/resources/tests/test_10.txt");
     }
 
     @Test
     public void test11() {
-        runTest(10, "src/test/resources/test_11.txt");
+        runTest(10, "src/test/resources/tests/test_11.txt");
     }
 
     @Test
     public void test12() {
-        runTest(11, "src/test/resources/test_12.txt");
+        runTest(11, "src/test/resources/tests/test_12.txt");
     }
 
     @Test
     public void test13() {
-        runTest(12, "src/test/resources/test_13.txt");
+        runTest(12, "src/test/resources/tests/test_13.txt");
     }
 
     @Test
     public void test14() {
-        runTest(13, "src/test/resources/test_14.txt");
+        runTest(13, "src/test/resources/tests/test_14.txt");
     }
 
     @Test
     public void test15() {
-        runTest(14, "src/test/resources/test_15.txt");
+        runTest(14, "src/test/resources/tests/test_15.txt");
     }
 
     @Test
     public void test16() {
-        runTest(15, "src/test/resources/test_16.txt");
+        runTest(15, "src/test/resources/tests/test_16.txt");
     }
 
     @Test
     public void test17() {
-        runTest(16, "src/test/resources/test_17.txt");
+        runTest(16, "src/test/resources/tests/test_17.txt");
     }
 
     @Test
     public void test18() {
-        runTest(17, "src/test/resources/test_18.txt");
+        runTest(17, "src/test/resources/tests/test_18.txt");
     }
 
     @Test
     public void test19() {
-        runTest(18, "src/test/resources/test_19.txt");
+        runTest(18, "src/test/resources/tests/test_19.txt");
     }
 
     @Test
     public void test20() {
-        runTest(19, "src/test/resources/test_20.txt");
+        runTest(19, "src/test/resources/tests/test_20.txt");
     }
 
     @Test
     public void test21() {
-        runTest(20, "src/test/resources/test_21.txt");
+        runTest(20, "src/test/resources/tests/test_21.txt");
     }
 
     @Test
     public void test22() {
-        runTest(21, "src/test/resources/test_22.txt");
+        runTest(21, "src/test/resources/tests/test_22.txt");
     }
 
     @Test
     public void test23() {
-        runTest(22, "src/test/resources/test_23.txt");
+        runTest(22, "src/test/resources/tests/test_23.txt");
     }
 
     @Test
     public void test24() {
-        runTest(23, "src/test/resources/test_24.txt");
+        runTest(23, "src/test/resources/tests/test_24.txt");
     }
 
     @Test
     public void test25() {
-        runTest(24, "src/test/resources/test_25.txt");
+        runTest(24, "src/test/resources/tests/test_25.txt");
     }
 
     @Test
     public void test26() {
-        runTest(25, "src/test/resources/test_26.txt");
+        runTest(25, "src/test/resources/tests/test_26.txt");
     }
 
     @Test
     public void test27() {
-        runTest(26, "src/test/resources/test_27.txt");
+        runTest(26, "src/test/resources/tests/test_27.txt");
     }
 
     @Test
     public void test28() {
-        runTest(27, "src/test/resources/test_28.txt");
+        runTest(27, "src/test/resources/tests/test_28.txt");
     }
 
     @Test
     public void test29() {
-        runTest(28, "src/test/resources/test_29.txt");
+        runTest(28, "src/test/resources/tests/test_29.txt");
     }
 
     @Test
     public void test30() {
-        runTest(29, "src/test/resources/test_30.txt");
+        runTest(29, "src/test/resources/tests/test_30.txt");
     }
 	@Test
     public void test31() {
-        runTest(30, "src/test/resources/test_31.txt");
+        runTest(30, "src/test/resources/tests/test_31.txt");
     }
 }
