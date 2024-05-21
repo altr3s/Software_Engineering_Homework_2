@@ -26,8 +26,14 @@ jobs:
         id: extract-failures
         if: failure()
         run: |
-          grep "<testcase " junit/*.xml | grep -B 1 "<failure" > failure-report.txt
-          echo "::set-output name=failure-summary::$(cat failure-report.txt)"
+          set +e
+          grep -E "<testcase|<failure" junit/*.xml | grep -B 1 "<failure" > failure-report.txt
+          if [ -s failure-report.txt ]; then
+            summary=$(cat failure-report.txt)
+          else
+            summary="No detailed failure information found."
+          fi
+          echo "::set-output name=failure-summary::$summary"
       - name: Notify Telegram on failure
         if: failure()
         uses: appleboy/telegram-action@master
