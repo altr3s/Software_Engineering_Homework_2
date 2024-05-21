@@ -15,9 +15,19 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml
-
+      - name: Build and test with Maven
+        run: mvn -B package test --file pom.xml
+      - name: Save test results
+        if: failure()
+        run: |
+          mkdir -p junit
+          cp target/surefire-reports/*.xml junit/
+      - name: Annotate failure
+        if: failure()
+        run: |
+          echo "##[group]Test Failures"
+          grep -A 2 -B 2 "<failure" junit/*.xml | tee failure-report.txt
+          echo "##[endgroup]"
       - name: Notify Telegram on failure
         if: failure()
         uses: appleboy/telegram-action@master
@@ -30,6 +40,11 @@ jobs:
             *Repository*: ${{ github.repository }}
             *Actor*: ${{ github.actor }}
             *Commit number*: ${{ github.sha }}
+            *Commit is not passed test ⚠️*
+            *Test Failures*:
+            ```
+            ${{ steps.annotate.outputs.failure-summary }}
+            ```
       - name: Notify Telegram on success
         if: success()
         uses: appleboy/telegram-action@master
