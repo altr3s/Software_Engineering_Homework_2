@@ -59,7 +59,7 @@ public class AppTest {
 		String filePath = "src/test/resources/tests/test_mult.txt";
 		BufferedReader reader = new BufferedReader(new FileReader(filePath));
 		String[] nums = reader.readLine().split(" ");
-        Assertions.assertEquals(expectations.get(0), App._mult(nums));
+        Assertions.assertEquals(expectations.get(3), App._mult(nums));
     }
 
 	@Test
