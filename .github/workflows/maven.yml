@@ -54,3 +54,4 @@ jobs:
             *Repository*: ${{ github.repository }}
             *Actor*: ${{ github.actor }}
             *Commit number*: ${{ github.sha }}
+            *See you in new commits :)*
