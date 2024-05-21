@@ -48,4 +48,3 @@ jobs:
             *Actor*: ${{ github.actor }}
             *Commit*: ${{ github.sha }}
             *Message*: ${{ github.event.head_commit.message }}
-            
