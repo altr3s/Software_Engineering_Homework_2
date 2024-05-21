@@ -29,7 +29,7 @@ jobs:
           set +e
           grep -E "<testcase|<failure" junit/*.xml | grep -B 1 "<failure" > failure-report.txt
           if [ -s failure-report.txt ]; then
-            summary=$(cat failure-report.txt)
+            summary=$(cat failure-report.txt | sed 's/</&lt;/g' | sed 's/>/&gt;/g')
           else
             summary="No detailed failure information found."
           fi
