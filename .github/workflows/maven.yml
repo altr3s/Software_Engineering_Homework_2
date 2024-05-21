@@ -27,10 +27,6 @@ jobs:
         run: |
           set +e
           grep -E "<testcase|<failure" junit/*.xml | grep -B 1 "<failure" > failure-report.txt
-          if [ -s failure-report.txt ]; then
-            cat failure-report.txt
-          else
-            echo "No detailed failure information found." > failure-report.txt
       - name: Notify Telegram on failure
         if: failure()
         uses: appleboy/telegram-action@master
