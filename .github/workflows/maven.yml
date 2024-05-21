@@ -22,16 +22,6 @@ jobs:
         run: |
           mkdir -p junit
           cp target/surefire-reports/*.xml junit/
-      - name: Extract test failures
-        id: extract-failures
-        if: failure()
-        run: |
-          set +e
-          failures=$(grep -oP '(?<=<testcase name=").+?(?=")' junit/*.xml | grep -B 1 '<failure' | awk 'NR % 2 == 1' | sed 's/^/    /')
-          if [ -z "$failures" ]; then
-            failures="No detailed failure information found."
-          fi
-          echo "::set-output name=failure-summary::$failures"
       - name: Notify Telegram on failure
         if: failure()
         uses: appleboy/telegram-action@master
@@ -45,10 +35,8 @@ jobs:
             *Actor*: ${{ github.actor }}
             *Commit number*: ${{ github.sha }}
             *Commit is not passed test ⚠️*
-            *Test Failures*:
-            ```
-            ${{ steps.extract-failures.outputs.failure-summary }}
-            ```
+            Отчет о проваленных тестах приложен к этому сообщению.
+          document: junit/TEST-*.xml
       - name: Notify Telegram on success
         if: success()
         uses: appleboy/telegram-action@master
