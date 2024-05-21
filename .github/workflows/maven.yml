@@ -21,30 +21,22 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
-      - name: Notify Telegram on failure
-        if: failure()
+      - name: Notify Telegram
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
+          if: success()
           message: |
-            Build Failed
+            Build Success ✅
             *Repository*: ${{ github.repository }}
             *Actor*: ${{ github.actor }}
             *Commit*: ${{ github.sha }}
-            *Message*: ${{ github.event.head_commit.message }}
-
-      - name: Notify Telegram on success
-        if: success()
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          format: markdown
-          message: |
-            Build Success
+          else:
+            |
+            Build Failed ❌
             *Repository*: ${{ github.repository }}
             *Actor*: ${{ github.actor }}
             *Commit*: ${{ github.sha }}
-            *Message*: ${{ github.event.head_commit.message }}
+        
