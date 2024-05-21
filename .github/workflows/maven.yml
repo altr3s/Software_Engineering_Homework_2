@@ -43,7 +43,7 @@ jobs:
             *Repository*: ${{ github.repository }}
             *Actor*: ${{ github.actor }}
             *Commit number*: ${{ github.sha }}
-            *Commit is not passed test ⚠️
+            *Commit is not passed test ⚠️*
             Отчет о проваленных тестах приложен к этому сообщению.
           document: failure-report.txt
       - name: Notify Telegram on success
