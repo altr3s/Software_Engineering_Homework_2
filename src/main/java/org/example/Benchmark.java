@@ -10,7 +10,7 @@ public class Benchmark {
 
     public static void main(String[] args) {
         String[] array = {"min", "max", "sum", "mult"};
-        for (int i = 1; i < 21; i++) {
+        for (int i = 1; i < 26; i++) {
             String filePath = "src/main/resources/benchmark_tests/test-" + i + ".txt";
 
             for (int j = 0; j < array.length; j++) {
