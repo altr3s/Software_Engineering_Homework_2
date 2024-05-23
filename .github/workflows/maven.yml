@@ -35,10 +35,12 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
           message: |
-            Build Failed ❌
+            *${{ github.actor }} created commit.*
+            *Commit message: ${{ github.event.head_commit.message }}*
             *Repository*: ${{ github.repository }}
-            *Actor*: ${{ github.actor }}
             *Commit number*: ${{ github.sha }}
+            *Build Failed ❌*
+            
             *Commit is not passed test(s) ⚠️. 
             Logs in the file:*
           document: failure-report.txt
@@ -50,8 +52,10 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
           message: |
-            Build Success. Commit is passed all tests ✅
+            *${{ github.actor }} created commit.*
+            *Commit message: ${{ github.event.head_commit.message }}*
             *Repository*: ${{ github.repository }}
-            *Actor*: ${{ github.actor }}
             *Commit number*: ${{ github.sha }}
+            *Build Success. Commit is passed all tests ✅*
+            
             *See you in new commits :)*
