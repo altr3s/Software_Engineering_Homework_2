@@ -39,7 +39,7 @@ jobs:
             *Repository*: ${{ github.repository }}
             *Actor*: ${{ github.actor }}
             *Commit number*: ${{ github.sha }}
-            *Commit is not passed test ⚠️. 
+            *Commit is not passed test(s) ⚠️. 
             Logs in the file:*
           document: failure-report.txt
       - name: Notify Telegram on success
@@ -50,7 +50,7 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
           message: |
-            Build Success ✅
+            Build Success. Commit is passed all tests ✅
             *Repository*: ${{ github.repository }}
             *Actor*: ${{ github.actor }}
             *Commit number*: ${{ github.sha }}
