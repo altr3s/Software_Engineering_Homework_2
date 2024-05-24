@@ -44,7 +44,7 @@ jobs:
             *Commit message: ${{ github.event.head_commit.message }}*
             *Repository*: ${{ github.repository }}
             *Commit number*: ${{ github.sha }}
-            *Build Success. Commit is passed all tests ✅*
+            *Build Success ✅*
       
 
   test:
@@ -90,6 +90,6 @@ jobs:
           format: markdown
           message: |
             *Commit number*: ${{ github.sha }}
-            *Build Success. Commit is passed all tests ✅*
+            *Commit is passed all tests ✅*
             
             *See you in new commits :)*
