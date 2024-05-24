@@ -8,6 +8,7 @@ import java.io.PrintStream;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.*;
 
 public class AppTest {
@@ -80,5 +81,10 @@ public class AppTest {
 		Assertions.assertEquals(
 			expectarion,
 			outContent.toString().trim());
+	}
+	@Test
+	@Timeout(value = 100, unit = TimeUnit.MILLISECONDS)
+	public void testFaild() throws InterruptedException {
+		Thread.sleep(200);
 	}
 }
