@@ -19,33 +19,6 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-      - name: Notify Telegram on failure
-        if: failure()
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          format: markdown
-          message: |
-            *${{ github.actor }} created commit.*
-            *Commit message: ${{ github.event.head_commit.message }}*
-            *Repository*: ${{ github.repository }}
-            *Commit number*: ${{ github.sha }}
-            *Build Failed ❌*
-          document: failure-report.txt
-      - name: Notify Telegram on success
-        if: success()
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          format: markdown
-          message: |
-            *${{ github.actor }} created commit.*
-            *Commit message: ${{ github.event.head_commit.message }}*
-            *Repository*: ${{ github.repository }}
-            *Commit number*: ${{ github.sha }}
-            *Build Success ✅*
 
   test:
     runs-on: ubuntu-latest
@@ -78,6 +51,12 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
           message: |
+            *${{ github.actor }} created commit.*
+            *Commit message: ${{ github.event.head_commit.message }}*
+            *Repository*: ${{ github.repository }}
+            *Commit number*: ${{ github.sha }}
+            *Build Failed ❌*
+            
             *Commit is not passed test(s) ⚠️. 
             Logs in the file:*
           document: failure-report.txt
@@ -89,6 +68,10 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
           message: |
-            *Commit is passed all tests ✅*
+            *${{ github.actor }} created commit.*
+            *Commit message: ${{ github.event.head_commit.message }}*
+            *Repository*: ${{ github.repository }}
+            *Commit number*: ${{ github.sha }}
+            *Build Success. Commit is passed all tests ✅*
             
             *See you in new commits :)*
