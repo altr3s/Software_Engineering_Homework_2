@@ -83,7 +83,6 @@ public class AppTest {
 			outContent.toString().trim());
 	}
 	@Test
-	@Disabled("flacky, need to see")
 	public void testFaild() throws InterruptedException {
 		Assertions.assertEquals(1, 2);
 	}
