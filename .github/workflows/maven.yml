@@ -19,6 +19,12 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn -B package --file pom.xml -DskipTests
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: target/
+
       - name: Notify Telegram on failure build
         if: failure()
         uses: appleboy/telegram-action@master
@@ -32,6 +38,7 @@ jobs:
             *Repository*: ${{ github.repository }}
             *Commit number*: ${{ github.sha }}
             *Build Failed ❌*
+
       - name: Notify Telegram on success build
         if: success()
         uses: appleboy/telegram-action@master
@@ -58,6 +65,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+          path: target/
       - name: Test with Maven
         run: mvn -B test --file pom.xml
       - name: Save test results
