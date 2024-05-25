@@ -42,16 +42,16 @@ public class Benchmark {
 
 			switch (testType) {
 				case "min":
-					App._min(nums);
+					App.getMin(nums);
 					break;
 				case "max":
-					App._max(nums);
+					App.getMax(nums);
 					break;
 				case "sum":
-					App._sum(nums);
+					App.getSum(nums);
 					break;
 				case "mult":
-					App._mult(nums);
+					App.getMult(nums);
 					break;
 				default:
 					throw new IllegalArgumentException("Неверный тип теста: " + testType);

@@ -33,10 +33,10 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
           message: |
-            *${{ github.actor }} created commit.*
-            *Commit message: ${{ github.event.head_commit.message }}*
-            *Repository*: ${{ github.repository }}
-            *Commit number*: ${{ github.sha }}
+            *${{ github.actor }}* created commit.
+            *Commit message: * ${{ github.event.head_commit.message }}
+            *Repository *: ${{ github.repository }}
+            *Commit number *: ${{ github.sha }}
             *Build Failed ❌*
 
       - name: Notify Telegram on success build
@@ -47,10 +47,10 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
           message: |
-            *${{ github.actor }} created commit.*
-            *Commit message: ${{ github.event.head_commit.message }}*
-            *Repository*: ${{ github.repository }}
-            *Commit number*: ${{ github.sha }}
+            *${{ github.actor }}* created commit.
+            *Commit message: * ${{ github.event.head_commit.message }}
+            *Repository *: ${{ github.repository }}
+            *Commit number *: ${{ github.sha }}
             *Build Success ✅*
       
 
@@ -81,7 +81,7 @@ jobs:
         if: failure()
         run: |
           set +e
-          grep -E "<testcase|<failure" junit/*.xml | grep -B 1 "<failure" > failure-report.txt
+          grep -E "<testcase|<failure" junit/*.xml | grep -B 1 "<failure" > failure-report.xml
       - name: Notify Telegram on failure
         if: failure()
         uses: appleboy/telegram-action@master
@@ -92,7 +92,7 @@ jobs:
           message: |
             *Commit is not passed test(s) ⚠️. 
             Logs in the file:*
-          document: failure-report.txt
+          document: failure-report.xml
       - name: Notify Telegram on success
         if: success()
         uses: appleboy/telegram-action@master
@@ -101,7 +101,4 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
           message: |
-            *Commit number*: ${{ github.sha }}
             *Commit is passed all tests ✅*
-            
-            *See you in new commits :)*

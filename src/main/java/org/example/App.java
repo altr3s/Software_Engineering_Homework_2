@@ -1,6 +1,7 @@
 package org.example;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -10,20 +11,30 @@ public class App {
 	public static void main(String[] args) {
         String fileName = "src/main/resources/input.txt";
 
+        if (args.length > 0) {
+            fileName = args[0];
+        }
+
+        File file = new File(fileName);
+        if (!file.exists()) {
+            System.out.println("Файл 'input.txt' не был передан. Пожалуйста, проверьте файл 'input.txt'");
+            return;
+        }
+
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line = reader.readLine();
 
             if (line == null || line.trim().isEmpty()) {
                 System.out.println("Файл пуст или содержит только пробельные символы. "
-					+ "Пожалуйста, проверьте файл 'input.txt'");
+                    + "Пожалуйста, проверьте файл 'input.txt'");
                 return;
             }
 
             String[] nums = line.split(" ");
-            System.out.println("Минимальное число: " + _min(nums));
-            System.out.println("Максимальное число: " + _max(nums));
-            System.out.println("Сумма чисел: " + _sum(nums));
-            System.out.println("Произведение чисел: " + _mult(nums));
+            System.out.println("Минимальное число: " + getMin(nums));
+            System.out.println("Максимальное число: " + getMax(nums));
+            System.out.println("Сумма чисел: " + getSum(nums));
+            System.out.println("Произведение чисел: " + getMult(nums));
 
         } catch (IOException e) {
             System.out.println("Ошибка при чтении файла: " + e.getMessage());
@@ -32,7 +43,7 @@ public class App {
         }
     }
 
-	public static BigInteger _min(String[] numbers) {
+	public static BigInteger getMin(String[] numbers) {
 		try {
 			BigInteger min = new BigInteger(numbers[0]);
 			for (String number : numbers) {
@@ -47,7 +58,7 @@ public class App {
 		}
 	}
 
-	public static BigInteger _max(String[] numbers) {
+	public static BigInteger getMax(String[] numbers) {
 		try {
 			BigInteger max = new BigInteger(numbers[0]);
 			for (String number : numbers) {
@@ -62,7 +73,7 @@ public class App {
 		}
 	}
 
-	public static BigInteger _sum(String[] numbers) {
+	public static BigInteger getSum(String[] numbers) {
 		try {
 			BigInteger sum = BigInteger.ZERO;
 			for (String number : numbers) {
@@ -74,7 +85,7 @@ public class App {
 		}
 	}
 
-	public static BigInteger _mult(String[] numbers) {
+	public static BigInteger getMult(String[] numbers) {
 		try {
 			BigInteger mult = BigInteger.ONE;
 			for (String number : numbers) {
