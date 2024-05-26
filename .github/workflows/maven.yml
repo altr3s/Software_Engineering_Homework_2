@@ -1,11 +1,9 @@
 name: Java CI with Maven
-
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   pull_request:
-    branches: ["main"]
-
+    branches: [ "main" ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,9 +31,9 @@ jobs:
           format: markdown
           message: |
             *${{ github.actor }}* created commit.
-            *Commit message:* ${{ github.event.head_commit.message }}
-            *Repository:* ${{ github.repository }}
-            *Commit number:* ${{ github.sha }}
+            *Commit message: * ${{ github.event.head_commit.message }}
+            *Repository *: ${{ github.repository }}
+            *Commit number *: ${{ github.sha }}
             *Build Failed ❌*
       - name: Notify Telegram on success build
         if: success()
@@ -46,15 +44,13 @@ jobs:
           format: markdown
           message: |
             *${{ github.actor }}* created commit.
-            *Commit message:* ${{ github.event.head_commit.message }}
-            *Repository:* ${{ github.repository }}
-            *Commit number:* ${{ github.sha }}
+            *Commit message: * ${{ github.event.head_commit.message }}
+            *Repository *: ${{ github.repository }}
+            *Commit number *: ${{ github.sha }}
             *Build Success ✅*
 
   test:
     runs-on: ubuntu-latest
-    env:
-      ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     needs: build
     steps:
       - uses: actions/checkout@v4
@@ -76,61 +72,12 @@ jobs:
         run: |
           mkdir -p junit
           cp target/surefire-reports/*.xml junit/
-      - name: Parse test results and create failure report
+      - name: Create test failure report
         if: failure()
         run: |
           set +e
-          cat <<'EOF' > parse_testcases.sh
-          #!/bin/bash
-          TXT_FILE="junit/*.xml"
-
-          print_test_info() {
-            if [[ -n "$name" ]]; then
-              failure_message=$(echo "$failure_message" | sed 's/&lt;/</g; s/&gt;/>/g')
-              echo "Test Case: $name"
-              echo "Class Name: $classname"
-              echo "Failure Message: $failure_message"
-              echo "Failure Type: $failure_type"
-              echo "-----------------------------------"
-            fi
-          }
-
-          name=""
-          classname=""
-          failure_message=""
-          failure_type=""
-          in_cdata=false
-
-          while IFS= read -r line; do
-            if [[ $line =~ \<testcase ]]; then
-              print_test_info
-              name=$(echo "$line" | grep -oP 'name="\K[^"]+')
-              classname=$(echo "$line" | grep -oP 'classname="\K[^"]+')
-              failure_message=""
-              failure_type=""
-            elif [[ $line =~ \<failure ]]; then
-              failure_message=$(echo "$line" | grep -oP 'message="\K[^"]+')
-              failure_type=$(echo "$line" | grep -oP 'type="\K[^"]+')
-              print_test_info
-              in_cdata=true
-            elif [[ $line =~ \</testcase ]]; then
-              print_test_info
-              name=""
-              classname=""
-              failure_message=""
-              failure_type=""
-              in_cdata=false
-            elif [[ $in_cdata == true ]]; then
-              failure_message="${failure_message}${line}"
-            fi
-          done < "$TXT_FILE"
-
-          print_test_info
-          EOF
-
-          chmod +x parse_testcases.sh
-          ./parse_testcases.sh > failure-report.txt
-          echo "::set-env name=FAILURE_REPORT::$(<failure-report.txt)"
+          grep -E "<testcase|<failure" junit/*.xml | grep -B 1 "<failure" > failure-report.txt
+          ls junit
       - name: Notify Telegram on failure
         if: failure()
         uses: appleboy/telegram-action@master
@@ -139,10 +86,9 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
           message: |
-            *Commit did not pass test(s) ⚠️.*
-            ```
-            ${{ env.FAILURE_REPORT }}
-            ```
+            *Commit is not passed test(s) ⚠️. 
+            Logs in the file:*
+          document: failure-report.txt
       - name: Notify Telegram on success
         if: success()
         uses: appleboy/telegram-action@master
@@ -151,4 +97,4 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
           message: |
-            *Commit passed all tests ✅*
+            *Commit is passed all tests ✅*
