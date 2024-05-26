@@ -80,8 +80,6 @@ jobs:
         if: failure()
         run: |
           set +e
-          set -eo pipefail
-          export CI_JOB_ID=1
           cat <<'EOF' > parse_testcases.sh
           #!/bin/bash
           TXT_FILE="junit/*.xml"
