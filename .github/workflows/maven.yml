@@ -2,9 +2,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -133,11 +133,9 @@ jobs:
 
           chmod +x parse_testcases.sh
           ./parse_testcases.sh > failure-report.txt
-          failure_report=$(cat failure-report.txt)
+          export FAILURE_REPORT=$(<failure-report.txt)
       - name: Notify Telegram on failure
         if: failure()
-        env:
-          FAILURE_REPORT: ${{ failure_report }}
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -146,7 +144,7 @@ jobs:
           message: |
             *Commit did not pass test(s) ⚠️.*
             ```
-            ${{ env.FAILURE_REPORT }}
+            ${{ FAILURE_REPORT }}
             ```
       - name: Notify Telegram on success
         if: success()
