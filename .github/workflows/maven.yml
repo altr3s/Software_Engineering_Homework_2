@@ -136,7 +136,7 @@ jobs:
           chmod +x parse_testcases.sh
           a=$(./parse_testcases.sh)
           echo "STRING<<EOF" >> $GITHUB_ENV
-          echo $a >> $GITHUB_ENV
+          echo "$a" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
       - name: Notify Telegram on failure
         if: failure()
@@ -144,7 +144,7 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          format: text
+          format: markdown
           message: "*Commit has not passed test(s) ⚠️.* ${{'\n'}} ${{env.STRING}}"
       - name: Notify Telegram on success
         if: success()
