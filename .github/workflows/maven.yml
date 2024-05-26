@@ -148,7 +148,7 @@ jobs:
           format: markdown
           message: |
             *Commit is not passed test(s) ⚠️.*
-            ${{STRING}}
+            ${{env.STRING}}
       - name: Notify Telegram on success
         if: success()
         uses: appleboy/telegram-action@master
