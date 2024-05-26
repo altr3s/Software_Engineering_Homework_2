@@ -76,6 +76,11 @@ jobs:
         run: |
           mkdir -p junit
           cp target/surefire-reports/*.xml junit/
+      - name: Print test results
+        if: failure()
+        run: |
+          ls -al junit
+          cat junit/*.xml
       - name: Parse test results and create failure report
         if: failure()
         run: |
