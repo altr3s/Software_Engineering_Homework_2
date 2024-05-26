@@ -74,6 +74,15 @@ jobs:
         run: |
           mkdir -p junit
           cp target/surefire-reports/*.xml junit/
+      - name: Setup MSBuild path
+        uses: microsoft/setup-msbuild@v1.0.0
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.2
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       - name: Parse test results and create failure report
         if: failure()
         run: |
