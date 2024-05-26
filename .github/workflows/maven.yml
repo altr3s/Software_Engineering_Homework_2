@@ -135,8 +135,9 @@ jobs:
           EOF
           chmod +x parse_testcases.sh
           a=$(./parse_testcases.sh)
-          echo "$a"
-          echo "STRING="$a"" >> "$GITHUB_OUTPUT"
+          echo "STRING<<EOF" >> $GITHUB_ENV
+          echo $a >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
       - name: Notify Telegram on failure
         env:
           STRING: ${{ steps.test.outputs.STRING }}
