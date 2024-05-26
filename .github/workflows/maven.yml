@@ -2,9 +2,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   pull_request:
-    branches: ["main"]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -24,6 +24,7 @@ jobs:
         with:
           name: build-artifact
           path: target/
+
       - name: Notify Telegram on failure build
         if: failure()
         uses: appleboy/telegram-action@master
@@ -33,9 +34,9 @@ jobs:
           format: markdown
           message: |
             *${{ github.actor }}* created commit.
-            *Commit message:* ${{ github.event.head_commit.message }}
-            *Repository:* ${{ github.repository }}
-            *Commit number:* ${{ github.sha }}
+            *Commit message: * ${{ github.event.head_commit.message }}
+            *Repository *: ${{ github.repository }}
+            *Commit number *: ${{ github.sha }}
             *Build Failed ❌*
       - name: Notify Telegram on success build
         if: success()
@@ -46,9 +47,9 @@ jobs:
           format: markdown
           message: |
             *${{ github.actor }}* created commit.
-            *Commit message:* ${{ github.event.head_commit.message }}
-            *Repository:* ${{ github.repository }}
-            *Commit number:* ${{ github.sha }}
+            *Commit message: * ${{ github.event.head_commit.message }}
+            *Repository *: ${{ github.repository }}
+            *Commit number *: ${{ github.sha }}
             *Build Success ✅*
 
   test:
