@@ -139,8 +139,6 @@ jobs:
           echo $a >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
       - name: Notify Telegram on failure
-        env:
-          STRING: ${{ steps.test.outputs.STRING }}
         if: failure()
         uses: appleboy/telegram-action@master
         with:
