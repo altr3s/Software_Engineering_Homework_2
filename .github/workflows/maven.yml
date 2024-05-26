@@ -144,7 +144,7 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          format: markdown
+          format: text
           message: "*Commit has not passed test(s) ⚠️.* ${{'\n'}} ${{env.STRING}}"
       - name: Notify Telegram on success
         if: success()
